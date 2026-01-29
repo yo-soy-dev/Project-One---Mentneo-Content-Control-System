@@ -13,7 +13,7 @@ export const createAdmin = async () => {
     const admin = await User.findOneAndUpdate(
       { email: adminEmail },
       {
-        name: "Admin",
+        name: "Mentneo",
         email: adminEmail,
         password: hashedPassword,
         role: "admin",

@@ -65,79 +65,6 @@ export default function Dashboard() {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 
-//   return (
-//   <div className="max-w-7xl mx-auto px-6 py-8">
-
-//     {/* TOP NAV */}
-//     <div className="hidden md:flex items-center gap-6 mb-10">
-//       <div className="relative">
-//         <button
-//           onClick={() => setDropdownOpen(prev => !prev)}
-//           className="font-medium hover:text-sky-500 transition"
-//         >
-//           Sections ▾
-//         </button>
-
-//         {dropdownOpen && (
-//           <div className="absolute left-0 mt-2 w-44 bg-white rounded-xl shadow-lg border z-50">
-//             {["website", "blog", "social", "announcement"].map(section => (
-//               <Link
-//                 key={section}
-//                 to={`/${section}`}
-//                 className="block px-4 py-2 text-sm hover:bg-sky-50 capitalize"
-//                 onClick={() => setDropdownOpen(false)}
-//               >
-//                 {section}
-//               </Link>
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </div>
-
-//     {/* HEADER */}
-//     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-//       <div>
-//         <h1 className="text-3xl font-extrabold tracking-tight">
-//           Content Dashboard
-//         </h1>
-//         <p className="text-gray-500 text-sm mt-1">
-//           Manage and publish content across platforms
-//         </p>
-//       </div>
-
-//       <Link
-//         to="/create"
-//         className="inline-flex items-center gap-2 px-5 py-2.5 
-//                    rounded-xl bg-sky-600 text-white font-medium 
-//                    shadow hover:bg-sky-700 transition"
-//       >
-//         + Add Content
-//       </Link>
-//     </div>
-
-//     {/* FILTERS */}
-//     <div className="bg-green-500 rounded-2xl border shadow-sm p-5 mb-8 ">
-//       <ContentFilters className="bg-yellow-500" onChange={handleFilterChange} />
-//     </div>
-
-  
-
-//     {/* CONTENT GRID */}
-//     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-//       {contents.map(content => (
-//         <ContentCard
-//           key={content._id}
-//           content={content}
-//           user={user}
-//           onApprove={approve}
-//           onPublish={publish}
-//         />
-//       ))}
-//     </div>
-//   </div>
-// );
-// }
 
 return (
   <div className="min-h-screen bg-gray-50">
@@ -187,7 +114,7 @@ return (
 
         <Link
           to="/create"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-600 text-white font-medium shadow hover:bg-sky-700 transition"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-sky-500 text-white font-medium shadow hover:bg-sky-600 transition"
         >
           + Add Content
         </Link>
@@ -223,6 +150,7 @@ return (
               user={user}
               onApprove={approve}
               onPublish={publish}
+              refresh={fetchContents}
             />
           ))}
         </div>

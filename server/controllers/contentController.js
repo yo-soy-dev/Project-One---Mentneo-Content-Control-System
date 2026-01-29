@@ -27,6 +27,9 @@ export const updateContent = async (req, res) => {
   const content = await Content.findById(req.params.id);
   if (!content) return res.status(404).json({ msg: "Not found" });
 
+  if (content.status !== "draft")
+    return res.status(400).json({ msg: "Only draft can be edited" });
+
   if (content.author.toString() !== req.user.id)
     return res.status(403).json({ msg: "Not allowed" });
 
@@ -38,6 +41,9 @@ export const updateContent = async (req, res) => {
 // APPROVE
 export const approveContent = async (req, res) => {
   const content = await Content.findById(req.params.id);
+  if (content.status !== "draft")
+    return res.status(400).json({ msg: "Only draft can be approved" });
+
   content.status = "approved";
   content.approvedBy = req.user.id;
   await content.save();
@@ -47,8 +53,34 @@ export const approveContent = async (req, res) => {
 // PUBLISH
 export const publishContent = async (req, res) => {
   const content = await Content.findById(req.params.id);
+  if (content.status !== "approved")
+    return res.status(400).json({ msg: "Only approved can be published" });
+
   content.status = "published";
   content.publishedAt = new Date();
   await content.save();
+  res.json(content);
+};
+
+export const deleteContent = async (req, res) => {
+  const content = await Content.findById(req.params.id);
+
+  if (!content) return res.status(404).json({ message: "Not found" });
+
+  if (
+    content.author.toString() !== req.user.id &&
+    req.user.role.toLowerCase() !== "admin"
+  ) {
+    return res.status(403).json({ message: "Not allowed" });
+  }
+
+
+  await content.deleteOne();
+  return res.status(200).json({ success: true });
+};
+
+export const getSingleContent = async (req, res) => {
+  const content = await Content.findById(req.params.id).populate("author", "name");
+  if (!content) return res.status(404).json({ msg: "Not found" });
   res.json(content);
 };
