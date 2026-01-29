@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.input {
+  @apply border p-2 w-full mb-3 rounded focus:outline-none focus:ring-2 focus:ring-black;
+}
+
+.nav-link {
+  @apply relative font-medium hover:text-sky-100 transition;
+}
+
+.mobile-link {
+  @apply block font-medium hover:bg-sky-500 px-3 py-2 rounded transition;
+}
+
+.badge {
+  @apply absolute -top-2 -right-4 bg-red-500 text-white text-xs font-bold px-2 rounded-full;
+}
