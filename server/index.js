@@ -12,12 +12,11 @@ dotenv.config();
 connectDB();
 
 const app = express();
-// app.use(cors());
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // your React dev server
-    credentials: true,               // allow cookies/credentials
+    origin: "http://localhost:5173", 
+    credentials: true,             
   })
 );
 

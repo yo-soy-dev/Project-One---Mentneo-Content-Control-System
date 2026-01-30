@@ -16,7 +16,6 @@ export default function Navbar({ user, pending = 3 }) {
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex justify-between items-center h-16">
 
-          {/* Logo */}
           <Link
             to="/"
             className="text-2xl font-extrabold tracking-wide hover:text-sky-200 transition"
@@ -24,7 +23,6 @@ export default function Navbar({ user, pending = 3 }) {
             Mentneo CMS
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-4">
             <Link
               to="/notifications"
@@ -55,7 +53,6 @@ export default function Navbar({ user, pending = 3 }) {
               <span>Help</span>
             </Link>
 
-            {/* User Card */}
             <div className="flex items-center gap-3 px-4 py-1 rounded-2xl bg-white/20 backdrop-blur-sm shadow-inner">
               <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 font-bold">
                 {user?.name[0] || "G"}
@@ -66,7 +63,6 @@ export default function Navbar({ user, pending = 3 }) {
               </div>
             </div>
 
-            {/* Logout Button */}
             <button
               onClick={logout}
               className="flex items-center gap-2 px-4 py-1 rounded-full bg-red-600 hover:bg-red-700 shadow-md transition"
@@ -76,7 +72,6 @@ export default function Navbar({ user, pending = 3 }) {
             </button>
           </div>
 
-          {/* Mobile Toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden p-2 rounded hover:bg-sky-600 transition"
@@ -86,7 +81,6 @@ export default function Navbar({ user, pending = 3 }) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <div
         className={`md:hidden bg-sky-600 overflow-hidden transition-all duration-300 ${menuOpen ? "max-h-96 py-4" : "max-h-0"
           }`}

@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 export default function CreateContent() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const id = searchParams.get("id"); // 👈 edit mode if exists
+  const id = searchParams.get("id"); 
 
   const [form, setForm] = useState({
     title: "",
@@ -17,9 +17,8 @@ export default function CreateContent() {
   });
 
   const [loading, setLoading] = useState(false);
-  const [tab, setTab] = useState("write"); // write | preview
+  const [tab, setTab] = useState("write"); 
 
-  // 🔹 FETCH CONTENT FOR EDIT
   useEffect(() => {
     if (!id) return;
 
@@ -47,7 +46,6 @@ export default function CreateContent() {
     fetchContent();
   }, [id]);
 
-  // 🔹 CREATE / UPDATE
   const submit = async () => {
     if (!form.title || !form.body) {
       toast.error("Title and content are required");
@@ -115,7 +113,6 @@ export default function CreateContent() {
           <option value="announcement">Announcement</option>
         </select>
 
-        {/* TITLE */}
         <input
           className="w-full border rounded-lg px-3 py-2 mb-4"
           placeholder="Title"
@@ -123,7 +120,6 @@ export default function CreateContent() {
           onChange={e => setForm({ ...form, title: e.target.value })}
         />
 
-        {/* TABS */}
         <div className="flex gap-2 mb-2">
           <button
             onClick={() => setTab("write")}
@@ -143,7 +139,6 @@ export default function CreateContent() {
           </button>
         </div>
 
-        {/* EDITOR */}
         {tab === "write" ? (
           <textarea
             rows="10"
@@ -160,7 +155,6 @@ export default function CreateContent() {
           </div>
         )}
 
-        {/* TAGS */}
         <input
           className="w-full border rounded-lg px-3 py-2 mb-6"
           placeholder="tags: react, node, ui"
@@ -168,7 +162,6 @@ export default function CreateContent() {
           onChange={e => setForm({ ...form, tags: e.target.value })}
         />
 
-        {/* BUTTON */}
         <button
           disabled={loading}
           onClick={submit}

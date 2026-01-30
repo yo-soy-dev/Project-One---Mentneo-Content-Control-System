@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 
 export default function Notifications() {
   const [notifications, setNotifications] = useState([]);
-  const [expandedIds, setExpandedIds] = useState([]); // Track expanded notifications
+  const [expandedIds, setExpandedIds] = useState([]); 
 
-  // Simulate fetching pending approvals
   useEffect(() => {
     const dummyNotifications = [
       {
@@ -76,7 +75,6 @@ Content: New campaign post targeting tech professionals for product launch.`,
                   </button>
                 </div>
 
-                {/* Expanded content */}
                 {isExpanded && (
                   <div className="mt-4 text-sm text-gray-700 whitespace-pre-line bg-sky-50 p-3 rounded transition-all duration-300">
                     {notif.details}

@@ -3,7 +3,6 @@ import Content from "../models/Content.js";
 
 const router = express.Router();
 
-// Only published content
 router.get("/public/content", async (req, res) => {
   const { type } = req.query;
   const filter = { status: "published" };

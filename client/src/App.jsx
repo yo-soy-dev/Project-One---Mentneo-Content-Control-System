@@ -21,11 +21,9 @@ export default function App() {
         <Toaster position="top-right" />
       <Routes>
 
-        {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected Routes with Layout */}
         <Route
           path="/"
           element={

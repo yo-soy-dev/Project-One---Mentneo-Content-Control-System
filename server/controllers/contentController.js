@@ -1,6 +1,5 @@
 import Content from "../models/Content.js";
 
-// CREATE
 export const createContent = async (req, res) => {
   const content = await Content.create({
     ...req.body,
@@ -9,7 +8,6 @@ export const createContent = async (req, res) => {
   res.json(content);
 };
 
-// READ with filters
 export const getContents = async (req, res) => {
   const { status, type, tag } = req.query;
   let filter = {};
@@ -22,7 +20,6 @@ export const getContents = async (req, res) => {
   res.json(contents);
 };
 
-// UPDATE draft
 export const updateContent = async (req, res) => {
   const content = await Content.findById(req.params.id);
   if (!content) return res.status(404).json({ msg: "Not found" });
@@ -38,7 +35,6 @@ export const updateContent = async (req, res) => {
   res.json(content);
 };
 
-// APPROVE
 export const approveContent = async (req, res) => {
   const content = await Content.findById(req.params.id);
   if (content.status !== "draft")
@@ -50,7 +46,6 @@ export const approveContent = async (req, res) => {
   res.json(content);
 };
 
-// PUBLISH
 export const publishContent = async (req, res) => {
   const content = await Content.findById(req.params.id);
   if (content.status !== "approved")

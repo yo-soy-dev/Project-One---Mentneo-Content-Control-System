@@ -63,10 +63,8 @@ export default function ContentCard({ content, user, onApprove, onPublish, refre
         Author: {content.author?.name || "Unknown"}
       </div>
 
-      {/* ACTIONS */}
       <div className="mt-4 flex flex-wrap gap-2">
 
-        {/* EDIT (draft only) */}
         {content.status === "draft" && (
           <button
             onClick={() => navigate(`/create?id=${content._id}`)}
@@ -76,7 +74,6 @@ export default function ContentCard({ content, user, onApprove, onPublish, refre
           </button>
         )}
 
-        {/* DELETE */}
         {(user.role === "admin" || (content.status === "draft" && user._id === content.author?._id)) && (
           <button
             onClick={() => setShowDelete(true)}
@@ -87,7 +84,6 @@ export default function ContentCard({ content, user, onApprove, onPublish, refre
 
         )}
 
-        {/* ADMIN */}
         {user.role === "admin" && content.status === "draft" && (
           <button
             onClick={() => onApprove(content._id)}
