@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", 
+    origin: "https://project-one-mentneo-content-control-ten.vercel.app", 
     credentials: true,             
   })
 );
